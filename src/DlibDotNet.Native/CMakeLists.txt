@@ -20,11 +20,11 @@ if(MSVC)
 		if (_cpp_latest_flag_supported)
 			add_compile_options("/std:c++latest")
 		endif()
-	else
-		set(CMAKE_CXX_STANDARD 17)
+	else()
+		set(CMAKE_CXX_STANDARD "17")
 	endif()
-else
-	set(CMAKE_CXX_STANDARD 17)
+else()
+	set(CMAKE_CXX_STANDARD "17")
 endif()
 
 add_definitions(-DUNICODE -D_UNICODE)
