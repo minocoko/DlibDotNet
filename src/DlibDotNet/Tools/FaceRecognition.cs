@@ -90,7 +90,7 @@ namespace DlibDotNet.Tools
             }
         }
 
-        public Matrix<double>[] FaceEncodings(Array2DBase image, Rectangle[] rects, double padding = 0.2d)
+        public Matrix<float>[] FaceEncodings(Array2DBase image, Rectangle[] rects, double padding = 0.2d)
         {
             this.ThrowIfDisposed();
 
@@ -104,7 +104,7 @@ namespace DlibDotNet.Tools
             var inType = image.ImageType.ToNativeArray2DType();
             using (var rectangles = new StdVector<Rectangle>(rects))
             {
-                using (var dets = new StdVector<Matrix<double>>())
+                using (var dets = new StdVector<Matrix<float>>())
                 {
                     var ret = Native.face_recognition_face_encodings(dets.NativePtr, this.NativePtr, inType, image.NativePtr, rectangles.NativePtr, padding);
                     if (ret == Dlib.Native.ErrorType.InputElementTypeNotSupport)
@@ -144,7 +144,7 @@ namespace DlibDotNet.Tools
             }
         }
 
-        public bool FaceCompare(Matrix<double> knownFaceCncodings, Matrix<double> faceEncodingToCheck, float tolerance = 0.6f)
+        public bool FaceCompare(Matrix<float> knownFaceCncodings, Matrix<float> faceEncodingToCheck, float tolerance = 0.6f)
         {
             this.ThrowIfDisposed();
 
